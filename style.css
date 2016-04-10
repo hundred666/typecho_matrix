@@ -1,0 +1,162 @@
+/** * Hundred *
+* @package Matrix
+* @author Hundred
+* @version 1.0.0
+* @link http://txiner.top
+*/
+html,body,div,p,ol,ul,li,dl,dt,dd,form,input,select,button,textarea,iframe,table,th,td{margin:0; padding:0}
+img{border:0 none}
+ul,li{list-style:none}
+h1, h2, h3, h4, h5, h6{color: #686868; line-height: 1.5em; margin: 15px 0; font-weight: 100; font-family: "Droid Sans", Verdana, Geneva, sans-serif;}
+body{font-family: "Microsoft YaHei","微软雅黑",Tahoma, Helvetica, Arial, "SimSun",sans-serif; font-size: 12px; background: #f5f5f5; color: #555;}
+input,textarea{font:14px/1.7 Serif; color:#555}
+input:focus,textarea:focus{outline:0}
+a{color: gray; text-decoration:none}
+a:hover{color:#5b6064; text-decoration:none}
+.left{float:left}
+.right{float:right}
+.clear:after{content:""; display:block; height:0; clear:both; font-size:0; line-height:0; overflow:hidden}
+.clear{zoom:1}
+.row{margin-left:auto; margin-right:auto}
+.container{max-width: 28rem; padding-left: 1rem; padding-right: 1rem; margin-left: auto; margin-right: auto;}
+.wrap{position: relative; width: 100%;}
+/* * Container * * Center the page content.*/ @media (min-width: 38em){.container{max-width: 34rem;}}
+@media (min-width: 56em){.container{max-width: 40rem;}}
+/* * Masthead * * Super small header above the content for site name and short description.*/
+.masthead{padding-top: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; font-size: 20px;}
+.masthead-title{margin-top: 0; margin-bottom: 0; color: #505050;}
+.masthead-title a{color: #505050;}
+.masthead-title small{font-size: 75%; font-weight: 400; color: #c0c0c0; letter-spacing: 0;}
+@media (max-width: 48em){.masthead-title{text-align: center;}
+.masthead-title small{display: none;}}
+/* * Sidebar * * The sidebar is the drawer, the item we are toggling with our handy hamburger * button in the corner of the page. * * This particular sidebar implementation was inspired by Chris Coyier's * "Offcanvas Menu with CSS Target" article, and the checkbox variation from the * comments by a reader. It modifies both implementations to continue using the * checkbox (no change in URL means no polluted browser history), but this uses * `position` for the menu to avoid some potential content reflow issues. * * Source: http://css-tricks.com/off-canvas-menu-with-css-target/#comment-207504*/ /* Style and "hide" the sidebar*/
+.sidebar{position: fixed; top: 0; bottom: 0; left: -14rem; width: 14rem; visibility: hidden; overflow-y: auto; font-family: "PT Sans", Helvetica, Arial, sans-serif; font-size: .875rem; /* 15px*/ color: rgba(255,255,255,.6); background-color: #808080; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out;}
+@media (min-width: 30em){.sidebar{font-size: .75rem; /* 14px*/}}
+/* Sidebar content*/
+.sidebar a{font-weight: normal; color: #fff;}
+.sidebar-item{padding: 1rem;}
+.sidebar-item p:last-child{margin-bottom: 0;}
+.sidebar-item-other .copyright{padding: 1rem 0.1rem;position: absolute; bottom: 0;}
+.sidebar-item-other{padding: 0.5rem;}
+/* Sidebar nav*/
+.sidebar-nav{border-bottom: 1px solid rgba(255,255,255,.1);}
+.sidebar-nav-item{display: block; padding: .5rem 1rem; border-top: 1px solid rgba(255,255,255,.1);}
+.sidebar-nav-item.active,
+a.sidebar-nav-item:hover,
+a.sidebar-nav-item:focus{text-decoration: none; background-color: rgba(255,255,255,.1); border-color: transparent;}
+@media (min-width: 48em){.sidebar-item{padding: 1.5rem;}
+.sidebar-nav-item{padding-left: 1.5rem; padding-right: 1.5rem;}}
+/* Hide the sidebar checkbox that we toggle with `.sidebar-toggle`*/
+.sidebar-checkbox{display: none;}
+/* Style the `label` that we use to target the `.sidebar-checkbox`*/ .sidebar-toggle{position: absolute; top: 1rem; left: 1rem; display: block; width: 1rem; padding: .5rem .65rem; color: #505050; border-radius: 4px; cursor: pointer;}
+.sidebar-toggle:before{display: block; content: ""; width: 100%; padding-bottom: .125rem; border-top: .375rem double; border-bottom: .125rem solid; /* Make the border inside the box*/ -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.sidebar-toggle:active,
+#sidebar-checkbox:checked ~ .sidebar-toggle{color: #fff;}
+@media (min-width: 30.1em){.sidebar-toggle{position: fixed; width: 1rem;}
+.sidebar-toggle:before{padding-bottom: .15rem; border-top-width: .45rem; border-bottom-width: .15rem;}}
+/* Slide effect * * Handle the sliding effects of the sidebar and content in one spot, seperate * from the default styles. * * As an a heads up, we don't use `transform: translate3d()` here because when * mixed with `position: fixed; ` for the sidebar toggle, it creates a new * containing block. Put simply, the fixed sidebar toggle behaves like * `position: absolute; ` when transformed. * * Read more about it at http://meyerweb.com/eric/thoughts/2011/09/12/.*/
+.wrap,
+.sidebar,
+.sidebar-toggle{-webkit-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden;}
+.wrap,
+.sidebar-toggle{-webkit-transition: -webkit-transform .3s ease-in-out; transition: transform .3s ease-in-out;}
+#sidebar-checkbox:checked + .sidebar{z-index: 10; visibility: visible;}
+#sidebar-checkbox:checked ~ .sidebar,
+#sidebar-checkbox:checked ~ .wrap,
+#sidebar-checkbox:checked ~ .sidebar-toggle{-webkit-transform: translateX(14rem); -ms-transform: translateX(14rem); transform: translateX(14rem);}
+/* * Reverse layout * * Flip the orientation of the page by placing the `.sidebar` and sidebar toggle * on the right side.*/
+.layout-reverse .sidebar{left: auto; right: -14rem;}
+.layout-reverse .sidebar-toggle{left: auto; right: 1rem;}
+.layout-reverse #sidebar-checkbox:checked ~ .sidebar,
+.layout-reverse #sidebar-checkbox:checked ~ .wrap,
+.layout-reverse #sidebar-checkbox:checked ~ .sidebar-toggle{-webkit-transform: translateX(-14rem); -ms-transform: translateX(-14rem); transform: translateX(-14rem);}
+/* * Overlay sidebar * * Make the sidebar content overlay the viewport content instead of pushing it * aside when toggled.*/ .sidebar-overlay #sidebar-checkbox:checked ~ .wrap{-webkit-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0);}
+@media (max-width: 768px){.index-pagenav{max-width:100%; padding:0 0 10px 0}}
+.content .row{padding:30px 0; margin: 0 auto; position: relative; color: gray; text-shadow: 1px 1px 1px #fff;}
+/* post*/ .post{margin-bottom: 3em;}
+.post header{position: relative; padding-left: 5em;}
+.post-title{margin: 0; font-style: normal; font-size: 20px; padding: 15px 0 9px 0;}
+.post-title a:hover{color: #939393; text-decoration: none;}
+.post-info{margin: 0; color: #b5b5b5; font-size: 11px; letter-spacing: 1px;}
+.post-info a{text-transform: uppercase;}
+.post .post-date{position: absolute; top: 5px; left: 0; width: 51px; height: 51px; background: url(images/date-bg.png) no-repeat; text-align: center;}
+.post .post-date span{display: block; margin-top: 5px; margin-left: 4px; color: #b4b4b4; font-size: 11px; text-transform: uppercase; letter-spacing: 3px;}
+.post > section{height: auto; overflow: hidden;}
+.post img{padding: 4px; background: #F4F4F4; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -ms-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease;}
+.post img:hover{opacity: 0.9;}
+.post footer{width: 100%; height: 1px; border-top: 1px solid #EBEBEB; border-bottom: 1px solid whiteSmoke; font-size: 1px;}
+.post-tags a{position:relative; padding: 4px 10px 4px 10px; margin-right:5px; font-size:.75em; background:#ebecee; border-radius:2px; vertical-align:middle; line-height:1.9em; color:#414141}
+.post-tags a:hover{color:#f08f00; background:rgba(255,152,0,0.1)}
+.post-tags a::before{content: "# ";}
+/*文章内容*/ .post-content{}
+.post-content p{line-height: 23px; letter-spacing: 1px; padding:5px 0px 5px 0px;}
+.post-content img{max-width:100%; height:auto}
+.post-content p a{color:#5895be; text-decoration: none;}
+.post-content ol,.post-content ul{margin:0 0 1em 2em}
+.post-content li{list-style:square outside none; margin-bottom:5px}
+.post-content h3{color: #507383; margin: 8px 0px 8px 0px; border-left: solid 5px #507383; padding-left: 15px;}
+.sep{background: url(images/post-msg.png) repeat-x; height: 17px; width: 100%;}
+/*翻页*/ .index-pagenav{max-width:924px; height:auto; margin:15px auto; position:relative; z-index:10; padding: 0 0 20px 0; text-align: center;}
+.page-nav{font-size: .85em; font-weight:normal; color:#a7a7a7; border-radius:2px}
+.page-prev a,.page-next a{background-color:#ebecee; color:#777; -webkit-box-shadow:1px 2px 3px #ddd; box-shadow:1px 2px 3px #ddd; padding: 8px 10px; -webkit-border-radius:3px; border-radius:3px}
+.page-prev a:hover,.page-next a:hover{color:white; background:#5b6064}
+.pagenav{margin:0; text-align:center}
+.cf:after,.cf:before{content:""; display:table}
+.cf:after{clear:both}
+.cf{zoom:1;}
+/*面包屑导航*/ #breadcrumb{margin-bottom:20px; padding-left: 10px; background-position: 0 3px;}
+#breadcrumb span{padding:0 5px}
+/*评论样式*/ #comments .children .comment-reply a,#comments .children .commentmetadata{display:none}
+#comments .children .vcard .c-time ,#comments .children .vcard .c-at{display:none}
+#comments .vcard .c-time{margin-left: 15px;}
+#comments .children .vcard .c-time{margin-left: 15px;}
+#comments .vcard .c-at a{margin-left: 15px;}
+#comments .vcard .c-at a:hover{color: #D7594C !important;}
+#comments .children .vcard .c-at a{margin-left: 15px;}
+#comments .children .vcard .c-at a:hover{color: #D7594C !important;}
+#comments .comment-body:hover .comment-reply a,#comments .comment-body:hover .commentmetadata{display:inline}
+#comments .comment-body:hover .vcard .c-time,#comments .comment-body:hover .vcard .c-at{display:inline}
+#comments .comment-body{padding-bottom:5px; min-height:45px; /*border-bottom:1px dashed #eee; border-left:1px dashed #eee*/}
+#comments .children .comment-body{min-height:0; padding-top:10px}
+#comments .children ol{/*border-left:1px dashed #eee*/}
+#comments .comment-body p{overflow:hidden; word-wrap:break-word; margin-bottom:2px}
+#comments .comment-body p a{color:#4A7304;}
+#comments ol,#comments ul{list-style:none}
+#comments .comment-list{clear:both; list-style:none}
+#comments .children .comment-list{border-bottom:0}
+#comments .comment-list li{padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px dashed#CCC;}
+#comments .commentmeta{float:left; margin-right:1em}
+#comments .commentmeta img{border: 1px solid #D8D8D8; background: white; padding: 1px;}
+#comments .commentmetadata{float:right; color:#999}
+#comments .comment-reply a{float:right; color:#999}
+#comments .children li{border:0; padding-bottom:0; margin-bottom:0}
+#comments .children .commentmeta img{width:32px; height:32px;}
+.respond{margin-top:10px}
+.respond p{margin-bottom:8px}
+#cancel-comment-reply{float:right}
+#cancel-comment-reply a{text-decoration:none; color:#999}
+#author_info input{width:140px; padding:3px 0 3px 50px; line-height:20px; font-size:12px; border:1px solid #CCC; -moz-box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; -webkit-box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; -o-box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; box-shadow:1px 1px 1px rgba(0,0,0,.05) inset}
+#author_info label small{color:#777; position:relative; left:-180px}
+*html #author_info label small{position:relative; top:-5px}
+*+html #author_info label small{position:relative; top:-5px}
+#comment_form{zoom:1; position:relative}
+#author_textarea{padding:5px; margin-bottom:25px; border:1px solid #ccc; -moz-box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; -webkit-box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; -o-box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; box-shadow:1px 1px 1px rgba(0,0,0,.05) inset}
+#comment_form textarea{-webkit-appearance:none; width:100%; height:9rem; border:0; background:0; position:relative; font-size: 12px;}
+#submit{line-height:24px; width:100%; cursor:pointer; border:1px solid #CCC}
+#author_info input:hover,#submit:hover,#author_textarea:hover,#search:hover{border-color:#aaa}
+#submit:active{-moz-box-shadow:1px 1px 3px rgba(0,0,0,.09) inset; -webkit-box-shadow:1px 3px 1px rgba(0,0,0,.09) inset; -o-box-shadow:1px 1px 3px rgba(0,0,0,.09) inset; box-shadow:1px 1px 3px rgba(0,0,0,.09) inset}
+/*评论区顶部统计*/ .commentsorping{float: right; overflow: hidden; margin: 20px 0 8px;}
+.commentpart{cursor: pointer; float: right; color: #A0A0A0; padding: 2px 10px 0;}
+.comments_number{color: #555; font-weight: 400; font-size: 16px; float: left; margin: 20px 10px 8px 0;}
+.comment_report{background: url(images/comment_report.png) no-repeat 0px 3px; float: left; width: 46px; height: 25px; cursor: pointer; margin-top: 20px;}
+.commentpart{font-size: 14px; padding: 5px 0px 0 10px; cursor: pointer; float: right; color: #555;}
+.reporthr{background: url(images/postline.png) no-repeat; height: 8px; margin-bottom: 30px;}
+/*footer*/ #footer{color:#929292; text-align:center; font-size:13px; line-height:2.5em; text-shadow:none}
+#footer a{color:#929292}
+#footer a:hover{color:#f77b83}
+/*返回顶部*/ #back-to-top{position: fixed; display: none; bottom: 5%; right: 4%; width: 50px; height: 50px; cursor: pointer; font-size: 30px; z-index:999; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg);}
+/* Quotes*/ blockquote{padding: .5rem 1rem; margin: .8rem 0; color: #7a7a7a; border-left: .25rem solid #e5e5e5;}
+blockquote p:last-child{margin-bottom: 0;}
+@media (min-width: 30em){blockquote{padding-right: 5rem; padding-left: 1.25rem;}}
+/* pre and code*/ code,pre{padding: 0 3px 2px; font-size: 12px; color: #333333; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
+pre{display: block; padding: 8.5px; margin: 0 0 9px; font-size: 12px; line-height: 18px; background-color: #f5f5f5; border: 1px solid #ccc; border: 1px solid rgba(0, 0, 0, 0.15); -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; white-space: pre; white-space: pre-wrap; word-break: break-all; word-wrap: break-word;}
