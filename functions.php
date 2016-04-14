@@ -17,6 +17,14 @@ function themeConfig($form) {
 
     $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('输入备案号'), _t('输入备案号'));
     $form->addInput($beian);
+
+    //工具开关
+    $sidebarFunc = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarFunc', 
+    array('categories' => _t('侧边栏是否显示分类'),
+    'snslinks' => _t('侧边栏是否显示社交分类'),
+    ),
+    array(''), _t('工具开关'));
+    $form->addInput($sidebarFunc->multiMode());
     
 }
 

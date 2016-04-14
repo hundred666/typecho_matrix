@@ -1,4 +1,4 @@
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" checked="">
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" >
 <!-- Toggleable sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-item">
@@ -13,38 +13,43 @@
                 <?php endwhile; ?>
         </nav>
 
-        <div class="sidebar-item-other">
-            <p class="category">
-                分类
-            </p>
-        </div>
+        <?php if (!empty($this->options->sidebarFunc) && in_array('categories', $this->options->sidebarFunc)): ?>
+
+            <div class="sidebar-item-other">
+                <p class="category">
+                    分类
+                </p>
+            </div>
 
 
-        <nav class="sidebar-nav">
-            <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
-                <?php while($category->next()): ?>
-                <a class="sidebar-nav-item <?php if($this->is('category', $category->slug)): ?> active<?php endif; ?>" href="<?php $category->permalink(); ?>" title="<?php $category->title(); ?>"><?php $category->name(); ?></a>
-                <?php endwhile; ?>
+            <nav class="sidebar-nav">
+                <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+                    <?php while($category->next()): ?>
+                    <a class="sidebar-nav-item <?php if($this->is('category', $category->slug)): ?> active<?php endif; ?>" href="<?php $category->permalink(); ?>" title="<?php $category->title(); ?>"><?php $category->name(); ?></a>
+                    <?php endwhile; ?>
 
-        </nav>
+            </nav>
+        <?php endif;?>
 
+        <?php if (!empty($this->options->sidebarFunc) && in_array('snslinks', $this->options->sidebarFunc)): ?>
         
-        <div class="sidebar-item-other">
-            <p class="sns">
-                社交连接
-            </p>
-        </div>
-        <nav class="sidebar-nav">
-            <?php if ($this->options->socialweibo): ?>
-                <a class="sidebar-nav-item" href="<?php $this->options->socialweibo(); ?>" title="Weibo" target="_blank">微博</a>
-            <?php endif; ?>
-            <?php if ($this->options->socialzhihu): ?>
-                <a class="sidebar-nav-item" href="<?php $this->options->socialzhihu(); ?>" title="Zhihu" target="_blank">知乎</a>
-            <?php endif; ?>
-            <?php if ($this->options->socialgithub): ?>
-                <a class="sidebar-nav-item" href="<?php $this->options->socialgithub(); ?>" title="Github" target="_blank">Github</a>
-            <?php endif; ?>
-        </nav>
+            <div class="sidebar-item-other">
+                <p class="sns">
+                    社交连接
+                </p>
+            </div>
+            <nav class="sidebar-nav">
+                <?php if ($this->options->socialweibo): ?>
+                    <a class="sidebar-nav-item" href="<?php $this->options->socialweibo(); ?>" title="Weibo" target="_blank">微博</a>
+                <?php endif; ?>
+                <?php if ($this->options->socialzhihu): ?>
+                    <a class="sidebar-nav-item" href="<?php $this->options->socialzhihu(); ?>" title="Zhihu" target="_blank">知乎</a>
+                <?php endif; ?>
+                <?php if ($this->options->socialgithub): ?>
+                    <a class="sidebar-nav-item" href="<?php $this->options->socialgithub(); ?>" title="Github" target="_blank">Github</a>
+                <?php endif; ?>
+            </nav>
+        <?php endif;?>
         
         
         <div class="sidebar-item-other">
