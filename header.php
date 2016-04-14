@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="<?php $this->options->themeUrl('style.css'); ?>" />
 <?php $this->header(); ?>
 </head>
-<body class="layout-reverse sidebar-overlay">
+<body class="<?php if (!empty($this->options->themelayout) && in_array('reverse-layout', $this->options->themelayout)): ?>layout-reverse<?php endif; ?> <?php if (!empty($this->options->themelayout) && in_array('overlay-push', $this->options->themelayout)): ?>sidebar-overlay<?php endif; ?>">
 <div class="icon-rocket" id="back-to-top"></div>
 <?php $this->need('sidebar.php'); ?>
 

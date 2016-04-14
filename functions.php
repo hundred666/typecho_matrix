@@ -24,7 +24,14 @@ function themeConfig($form) {
     'snslinks' => _t('侧边栏是否显示社交分类'),
     ),
     array(''), _t('工具开关'));
-    $form->addInput($sidebarFunc->multiMode());
+    $form->addInput($sidebarFunc);
+
+    //显示开关
+    $themelayout = new Typecho_Widget_Helper_Form_Element_Checkbox('themelayout', 
+    array('reverse-layout' => _t('左右侧显示，不选左侧，选中右侧'),
+    'overlay-push' => _t('占据显示还是移动显示，选中与否自己看效果吧，不好描述')),
+    array('overlay-push' ), _t('页面布局'));
+    $form->addInput($themelayout);
     
 }
 
